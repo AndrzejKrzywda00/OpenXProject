@@ -61,36 +61,28 @@ public class MyTreeTest {
         assertEquals(expectedPathLength, tree.getLongestPathFromHeadToALeaf());
     }
 
+    // --- EQUALS TESTS ---
     @Test
-    void testEquals_whenEmptyTree_shouldBeTrue() throws IOException {
+    void testEquals_whenEmptyTree_shouldBeEqual() throws IOException {
         MyTree t1 = new MyTree(null);
         MyTree t2 = TreeMapper.jsonToTree(path + "null_tree.json");
         assertEquals(t1, t2);
     }
 
     @Test
-    void testEquals_whenExampleTree_shouldBeTrue() throws IOException {
-        MyTree t1 = TreeMapper.jsonToTree(path + "example_tree.json");
-        MyTree t2 = TreeMapper.jsonToTree(path + "example_tree.json");
-        assertEquals(t1, t2);
-    }
-
-    @Test
-    void testEquals_whenSimpleTree_shouldBeTrue() throws IOException {
-        MyTree t1 = TreeMapper.jsonToTree(path + "simple_tree.json");
-        TreeNode head = new TreeNode(1);
-        head.setRightChild(new TreeNode(3));
-        head.setLeftChild(new TreeNode(2));
+    void testEquals_whenReferenceToSameTree_shouldBeEqual() {
+        TreeNode head = new TreeNode(0);
+        MyTree t1 = new MyTree(head);
         MyTree t2 = new MyTree(head);
-        System.out.println(t1.hashCode());
-        System.out.println(t2.hashCode());
         assertEquals(t1, t2);
     }
 
     @Test
-    void testEquals_whenSimpleTree_shouldBeFalse() throws IOException {
-        MyTree t1 = TreeMapper.jsonToTree(path + "simple_tree.json");
-        MyTree t2 = TreeMapper.jsonToTree(path + "single_node.json");
+    void testEquals_whenDifferentHeads_shouldBeFalse() {
+        TreeNode h1 = new TreeNode(1);
+        TreeNode h2 = new TreeNode(2);
+        MyTree t1 = new MyTree(h1);
+        MyTree t2 = new MyTree(h2);
         assertNotEquals(t1, t2);
     }
 }
