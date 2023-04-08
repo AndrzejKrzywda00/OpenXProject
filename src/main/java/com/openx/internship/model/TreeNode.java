@@ -36,7 +36,7 @@ public class TreeNode {
         if (t1 == null || t2 == null) return false;
         return t1.getValue() == t2.getValue()
                 && areTreesEqual(t1.leftChild, t2.leftChild)
-                && areTreesEqual(t1.rightChild, t2.leftChild);
+                && areTreesEqual(t1.rightChild, t2.rightChild);
     }
 
     @Override
