@@ -1,6 +1,5 @@
 package com.openx.internship.mapper;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.openx.internship.model.MyTree;
 import com.openx.internship.model.TreeNode;

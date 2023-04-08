@@ -1,5 +1,7 @@
 package com.openx.internship.model;
 
+import java.util.Objects;
+
 /***
  * Represents a binary tree
  */
@@ -37,18 +39,15 @@ public record MyTree(TreeNode head) {
      */
     @Override
     public boolean equals(Object o) {
-        return o instanceof MyTree && isEqualToTree((MyTree) o, this);
+        if (o == this) return true;
+        if (!(o instanceof MyTree)) return false;
+        return Objects.equals(((MyTree) o).head, this.head);
     }
 
-    private boolean isEqualToTree(MyTree t1, MyTree t2) {
-        if (t1 == t2) return true;
-        return checkEquality(t1.head(), t2.head());
-    }
-
-    private boolean checkEquality(TreeNode n1, TreeNode n2) {
-        if (n1 == n2) return true;
-        return n1.getValue() == n2.getValue()
-                && checkEquality(n1.getLeftChild(), n2.getLeftChild())
-                && checkEquality(n1.getRightChild(), n2.getRightChild());
+    @Override
+    public int hashCode() {
+        int result = 19;
+        result = 31 * result + (head == null ? 0 : head.hashCode());
+        return result;
     }
 }
