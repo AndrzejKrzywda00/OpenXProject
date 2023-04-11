@@ -1,6 +1,7 @@
 # OpenX Internship Project
 
 ## Implementing binary tree data structure
+All the implementation has appropriate tests written.
 
 ### 1. General information
 The data structure presented in the description is a binary tree.
